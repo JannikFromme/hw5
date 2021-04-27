@@ -3,7 +3,7 @@
 // - The API takes three inputs (querystring parameters)
 //   - key = your API key
 //   - q = a location query (e.g. Chicago)
-//   - days = number of days of forecast data to return, between 1-10
+//   - days = number of days of forecast data to return, between 1-3
 // - Example: https://api.weatherapi.com/v1/forecast.json?key=YOUR-API-KEY&q=Chicago&days=3
 // - The basic recipe (algorithm) is included; write the rest of the recipe in the comments!
 // - Lab: Follow the provided recipe and the "mock-up" provided in the hard-coded HTML; respond 
@@ -22,16 +22,18 @@ window.addEventListener('DOMContentLoaded', async function() {
     // - Ignore the default behavior of the button
     event.preventDefault()
 
-    // - Get a reference to the element containing the user-entered location
+    // - Get a reference to the element containing the user-entered location and number of days
     let locationInput = document.querySelector(`#location`)
+    let numDaysInput = document.querySelector(`#days`)
 
-    // - Get the user-entered location from the element's value
+    // - Get the user-entered location and number of days from the element's value
     let location = locationInput.value
+    let numDays = numDaysInput.value
 
     // - Check to see if the user entered anything; if so:
     if (location.length > 0) {
       // - Construct a URL to call the WeatherAPI.com API
-      let url = `https://api.weatherapi.com/v1/forecast.json?key=1ddcb03accb34d72891153938212704&q=${location}&days=3`
+      let url = `https://api.weatherapi.com/v1/forecast.json?key=1ddcb03accb34d72891153938212704&q=${location}&days=${numDays}`
 
       // - Fetch the url, wait for a response, store the response in memory
       let response = await fetch(url)
@@ -62,6 +64,41 @@ window.addEventListener('DOMContentLoaded', async function() {
           </div>
         </div>
       `
+
+      // Store a reference for the "forecast" element
+      let forecastElement = document.querySelector(`.forecast`)
+
+      // Check if the user entered a number of days that lies between 1 and 3
+      if(!(numDays >= 1 && numDays <= 3)){
+
+        // Display an alert if it's not a number between 0 and 3
+        alert(`Please enter a number between 1 and 3`)
+
+        // If it's a valid number, display forecast for the specified number of days
+      } else {
+
+        // First, fill "forecast" element with forecast headline (specific to number of days)
+        forecastElement.innerHTML = `
+        <div class="font-bold text-3xl">${numDays}-Day Forecast</div>
+        `
+
+        // Second, display daily data using a for-loop
+        for (i = 0; i < numDays; i++) {
+
+          // Create a variable to store each forecast day in memory
+          let forecastDay = dailyForecast.forecastday[i]
+
+          // Insert HTML into the forecast element, using the data from each day
+          forecastElement.insertAdjacentHTML (`beforeend`, 
+          `<div>
+          <img src="https://${forecastDay.day.condition.icon}" class="mx-auto">
+          <h1 class="text-2xl text-bold text-gray-500">${forecastDay.date}</h1>
+          <h2 class="text-xl">High ${forecastDay.day.maxtemp_f}° – Low ${forecastDay.day.mintemp_f}°</h2>
+          <p class="text-gray-500">${forecastDay.day.condition.text}</h1>
+        </div>`
+        )
+      }
+    }
     }
   })
 })
