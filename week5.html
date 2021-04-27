@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Weathernator</title>
+  <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+
+  <div>
+    <h1 class="text-xl bg-black py-4 px-8">
+      <a href="week5.html" class="mx-auto container">
+        <span class="font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-green-500">The Weathernator</span>
+      </a>
+    </h1>
+  </div>
+
+  <div class="p-8 space-y-8">
+    <div class="my-16">
+      <div class="text-center">
+        <form>
+          <input type="text" name="location" id="location" placeholder="Location" class="border border-gray-400 rounded p-2 mr-1">
+          <input type="text" name="days" id="days" placeholder="Days" class="border border-gray-400 w-16 rounded p-2 mr-1">
+          <button class="get-weather border bg-green-500 text-white rounded px-4 py-2">Get Weather!</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="current mt-8">
+      <!-- An example only! You should delete the contents of this div when done. -->
+      <div class="text-center space-y-2">
+        <div class="font-bold text-3xl">Current Weather for Chicago, Illinois</div>
+        <div class="font-bold">
+          <img src="https://cdn.weatherapi.com/weather/64x64/day/116.png" class="inline-block">
+          <span class="temperature">60</span>° 
+          and
+          <span class="conditions">Partly Cloudy</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="forecast space-y-4">
+      <!-- An example only! You should delete the contents of this div when done. -->
+      <div class="text-center space-y-8">
+        <div class="font-bold text-3xl">3 Day Forecast</div>
+        <div>
+          <img src="https://cdn.weatherapi.com/weather/64x64/day/116.png" class="mx-auto">
+          <h1 class="text-2xl text-bold text-gray-500">2021-04-27</h1>
+          <h2 class="text-xl">High 66° – Low 44°</h2>
+          <p class="text-gray-500">Partly Cloudy</h1>
+        </div>
+        <div>
+          <img src="https://cdn.weatherapi.com/weather/64x64/day/116.png" class="mx-auto">
+          <h1 class="text-2xl text-bold text-gray-500">2021-04-28</h1>
+          <h2 class="text-xl">High 66° – Low 44°</h2>
+          <p class="text-gray-500">Partly Cloudy</h1>
+        </div>
+
+        <div>
+          <img src="https://cdn.weatherapi.com/weather/64x64/day/116.png" class="mx-auto">
+          <h1 class="text-2xl text-bold text-gray-500">2021-04-29</h1>
+          <h2 class="text-xl">High 66° – Low 44°</h2>
+          <p class="text-gray-500">Partly Cloudy</h1>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="week5.js"></script>
+</body>
+
+</html>
