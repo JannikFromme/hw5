@@ -19,7 +19,7 @@ window.addEventListener('DOMContentLoaded', async function() {
 
   // When the "get weather" button is clicked:
   getWeatherButton.addEventListener(`click`, async function(event) {
-    
+
     // - Ignore the default behavior of the button
     event.preventDefault()
 
@@ -69,11 +69,11 @@ window.addEventListener('DOMContentLoaded', async function() {
       // Store a reference for the "forecast" element
       let forecastElement = document.querySelector(`.forecast`)
 
-      // Check if the user entered a number of days that lies between 1 and 3
-      if(!(numDays >= 1 && numDays <= 3)){
+      // Check if the user entered a valid number (> 1)
+      if(!(numDays >= 1)){
 
-        // Display an alert if it's not a number between 0 and 3
-        alert(`Please enter a number between 1 and 3`)
+        // Display an alert if it's not a number larger than 1
+        alert(`Please enter a number that is 1 or larger`)
 
         // If it's a valid number, display forecast for the specified number of days
       } else {
