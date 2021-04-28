@@ -19,6 +19,7 @@ window.addEventListener('DOMContentLoaded', async function() {
 
   // When the "get weather" button is clicked:
   getWeatherButton.addEventListener(`click`, async function(event) {
+    
     // - Ignore the default behavior of the button
     event.preventDefault()
 
